@@ -1,0 +1,38 @@
+{
+  "name": "uinika.github.io",
+  "version": "1.5.0",
+  "description": "Hank's blog",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uinika/uinika.github.io"
+  },
+  "author": "Hank",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "moment": "^2.17.1",
+    "mongodb": "^2.2.20",
+    "mongoose": "^4.7.6",
+    "multer": "^1.2.1",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "colors": "^1.1.2",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-less": "^3.3.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^2.0.0",
+    "gulp-zip": "^3.2.0",
+    "load-json-file": "^2.0.0"
+  }
+}
