@@ -8,7 +8,8 @@
       "ui.bootstrap",
       "common.http",
       "app.layout",
-      "app.dashboard"
+      "app.dashboard",
+      "app.contents"
     ])
     .config(config);
 

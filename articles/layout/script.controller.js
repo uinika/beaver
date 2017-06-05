@@ -1,9 +1,5 @@
 (function () {
 
-  /* module */
-  angular.module("app.layout", []);
-
-  /* controller */
   angular
     .module("app.layout")
     .controller("LayoutController", LayoutController);
@@ -22,23 +18,6 @@
           // $.AdminLTE.layout.activate();
         });
     };
-
-  };
-
-  /* service */
-  angular
-    .module("app.dashboard")
-    .service("layoutService", layoutService);
-
-  layoutService.$inject = ["$http"];
-
-  function layoutService($http) {
-    var service = {
-      test: test
-    };
-    return service;
-
-    function test() {};
   };
 
 })();
