@@ -1,8 +1,6 @@
 (function () {
-  /* module */
   angular.module("app.profile", []);
 
-  /* router */
   angular
     .module("app.profile")
     .config(profileConfig);

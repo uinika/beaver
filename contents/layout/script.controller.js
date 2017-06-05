@@ -11,7 +11,7 @@
     activate();
 
     function activate() {
-      $scope.$on('$stateChangeSuccess',
+      $scope.$on("$viewContentLoaded",
         function (event, toState, toParams, fromState, fromParams) {
           $.AdminLTE.layout.fix();
           // $.AdminLTE.layout.fixSidebar();
