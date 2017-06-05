@@ -14,7 +14,7 @@
       .state("dashboard", {
         parent: "layout",
         url: "/dashboard",
-        templateUrl: "articles/dashboard/view.html"
+        templateUrl: "contents/dashboard/view.html"
       });
   };
 

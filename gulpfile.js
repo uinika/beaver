@@ -14,7 +14,7 @@ const Gulp = require("gulp"),
 /** gulp */
 Gulp.task("default", () => {
   // less & concat
-  const source = "./articles/";
+  const source = "./contents/";
   const target = "./bundles/";
   const combine = () => {
     Gulp.src([source + "**/*.less"])

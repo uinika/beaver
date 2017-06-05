@@ -9,7 +9,7 @@
       "common.http",
       "app.layout",
       "app.dashboard",
-      "app.contents"
+      "app.articles"
     ])
     .config(config);
 
@@ -20,7 +20,7 @@
     $stateProvider
       .state("layout", {
         url: "/layout",
-        templateUrl: "articles/layout/view.html",
+        templateUrl: "contents/layout/view.html",
         controller: "LayoutController",
         controllerAs: "Layout"
       })
