@@ -6,7 +6,7 @@
       "ngAnimate",
       "ui.router",
       "ui.bootstrap",
-      "common.http",
+      "app.common",
       "app.layout",
       "app.dashboard",
       "app.articles"
