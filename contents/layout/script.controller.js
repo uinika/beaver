@@ -14,9 +14,12 @@
       $scope.$on("$viewContentLoaded",
         function (event, toState, toParams, fromState, fromParams) {
           $.AdminLTE.layout.fix();
-          $templateCache.removeAll();
           // $.AdminLTE.layout.fixSidebar();
           // $.AdminLTE.layout.activate();
+        });
+      $scope.$on("$stateChangeSuccess",
+        function (event, toState, toParams, fromState, fromParams) {
+          $templateCache.removeAll();
         });
     };
   };
