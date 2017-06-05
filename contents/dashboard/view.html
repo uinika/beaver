@@ -22,7 +22,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div ui-sref="articles.reading" class="info-box">
-          <span class="info-box-icon bg-yellow"><i class="fa fa-send-o"></i></span>
+          <span class="info-box-icon bg-aqua"><i class="fa fa-send-o"></i></span>
           <div class="info-box-content">
             <span class="info-box-text">Reading</span>
             <span class="info-box-number">阅读&翻译</span>
@@ -41,30 +41,59 @@
     </div>
     <!-- second row -->
     <div class="row">
-      <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="col-md-5 col-sm-5 col-xs-12">
         <div class="box box-widget">
           <div class="box-header with-border">
             <div class="user-block">
-              <img class="img-circle" src="./libraries/admin/img/user1-128x128.jpg" alt="User Image">
-              <span class="username"><a>大数据</a></span>
-              <span class="description">{{Dashboard.date.now}}</span>
+              <img class="img-circle" src="./libraries/admin/img/user1-128x128.jpg">
+              <span class="username"><a>Github</a></span>
+              <span class="description">Pinned repositories</span>
             </div>
             <div class="box-tools">
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
               <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
             </div>
           </div>
-          <div class="box-body"></div>
-          <div class="box-footer box-comments"></div>
-          <div class="box-footer"></div>
+          <ul class="nav nav-stacked">
+            <li>
+              <a href="https://github.com/uinika/saga" target="blank">
+                <span>Saga</span>
+                <span class="pull-right badge bg-aqua">React</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/uinika/aves" target="blank">
+                <span>Aves</span>
+                <span class="pull-right badge bg-green">Vue</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/uinika/leo" target="blank">
+                <span>Leo</span>
+                <span class="pull-right badge bg-red">80C51</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/uinika/octopus" target="blank">
+                <span>Octopus</span>
+                <span class="pull-right badge bg-blue">Backbone</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/uinika/linux.note/blob/master/config.md" target="blank">
+                <span>Config</span>
+                <span class="pull-right badge bg-gray">Linux</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="col-md-7 col-sm-7 col-xs-12">
         <div class="box box-widget">
           <div class="box-header with-border">
             <div class="user-block">
               <img class="img-circle" src="./libraries/admin/img/user1-128x128.jpg" alt="User Image">
-              <span class="username"><a>大数据</a></span>
+              <span class="username"><a>最近更新</a></span>
               <span class="description">{{Dashboard.date.now}}</span>
             </div>
             <div class="box-tools">
