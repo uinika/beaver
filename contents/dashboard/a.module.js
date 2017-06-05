@@ -14,7 +14,9 @@
       .state("dashboard", {
         parent: "layout",
         url: "/dashboard",
-        templateUrl: "contents/dashboard/view.html"
+        templateUrl: "contents/dashboard/view.html",
+        controller: "DashboardController",
+        controllerAs: "Dashboard"
       });
   };
 
