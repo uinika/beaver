@@ -36,7 +36,7 @@ Gulp.task("default", () => {
   // live reload
   const reloadSource = [
     "./index.html",
-    "./articles/**/*.html",
+    "./contents/**/*.html",
     "./bundles/**/*"
   ];
   Connect.server({
