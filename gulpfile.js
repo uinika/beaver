@@ -1,24 +1,23 @@
 const gulp = require("gulp"),
   del = require("del"),
-  common = require("./config/common");
+  _default = require("./config/default"),
+  _clean = require("./config/clean"),
+  _build = require("./config/build"),
+  _release = require("./config/release");
 
 
-/** gulp */
 gulp.task("default", () => {
-  common.default();
+  _default();
 });
 
-/** gulp build */
 gulp.task("build", () => {
-  common.build();
+  _build();
 });
 
-/** gulp release */
 gulp.task("release", ["build"], () => {
-  common.release();
+  _release();
 });
 
-/** gulp clean */
 gulp.task("clean", () => {
-  delete([_bundles, _release]);
+  _clean();
 });

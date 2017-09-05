@@ -6,56 +6,44 @@ const gulp = require("gulp"),
   sass = require("gulp-sass"),
   autoprefixer = require("gulp-autoprefixer"),
   concat = require("gulp-concat"),
-  uglifyJS = require("gulp-uglify"),
-  cleanCSS = require("gulp-clean-css"),
-  minHtml = require("gulp-htmlmin"),
-  zip = require("gulp-zip"),
-  minimist = require('minimist'),
+  minimist = require("minimist"),
   moment = require("moment"),
-  del = require("del"),
   base = require("./base");
 
 
-/** path */
-const _base = __dirname;
-const _client = "./client/";
-const _server = "./server/";
-const _build = "./build/";
-const _release = "./release/";
-const _bundles = "./client/bundles/";
-const _sources = "./client/sources/";
-
-/**  */
-
+/** base */
+const _path = base.path;
 const _port = base.client.port;
 const _uri = base.client.uri;
 
-exports.default = () => {
+module.exports = () => {
   // concat then scss & autoprefix
   const transform = () => {
-    gulp.src(_sources + "**/*.scss")
+    gulp.src(_path.sources + "**/*.scss")
       .pipe(concat("styles.css"))
       .pipe(sass().on("error", sass.logError))
       .pipe(autoprefixer())
-      .pipe(gulp.dest(_bundles));
-    gulp.src([_sources + "app.js", _sources + "**/*.js"])
+      .pipe(gulp.dest(_path.bundles));
+    gulp.src([_path.sources + "app.js", _path.sources + "**/*.js"])
       .pipe(concat("scripts.js"))
-      .pipe(gulp.dest(_bundles));
+      .pipe(gulp.dest(_path.bundles));
   };
   transform();
   gulp.watch([
-    _sources + "**/*.*"
+    _path.sources + "**/*.*"
   ], transform);
   // connect by JetBrains
   connect.server({
-    root: _client,
+    root: _path.client,
     port: _port,
-    livereload: true
+    livereload: {
+      port: 35729
+    }
   });
   const reload = [
-    (_bundles + "**/*"),
-    (_sources + "**/*"),
-    (_client + "index.html")
+    (_path.bundles + "**/*"),
+    (_path.sources + "**/*"),
+    (_path.client + "index.html")
   ];
   gulp.watch(reload, () => {
     gulp.src(reload)
@@ -63,8 +51,8 @@ exports.default = () => {
   });
   // nodemon for express server
   nodemon({
-    script: (_server + "app.js"),
-    watch: [(_server + "*.js")],
+    script: (_path.server + "app.js"),
+    watch: [(_path.server + "*.js")],
   });
   console.info(
     chalk.yellow.bgBlue("jetbrains-connect-server started on http://localhost:" + _port + _uri)
