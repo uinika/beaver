@@ -3,8 +3,8 @@ const gulp = require("gulp"),
   connect = require("gulp-connect"),
   nodemon = require("gulp-nodemon"),
   sass = require("gulp-sass"),
-  Concat = require("gulp-concat"),
-  UglifyJS = require("gulp-uglify"),
+  concat = require("gulp-concat"),
+  uglifyJS = require("gulp-uglify"),
   cleanCSS = require("gulp-clean-css"),
   minHtml = require("gulp-htmlmin"),
   zip = require("gulp-zip"),
@@ -12,46 +12,50 @@ const gulp = require("gulp"),
   moment = require("moment"),
   del = require("del");
 
+/** path */
+const _base = __dirname;
+const _client = "./client/";
+const _server = "./server/";
+const _build = "./build/";
+const _release = "./release/";
+const _bundles = "./client/bundles/";
+const _sources = "./client/sources/";
+
 /** gulp */
 gulp.task("default", () => {
-  // less & concat
-  const source = "./sources/partials/";
-  const target = "./sources/bundles";
-  const combine = () => {
-    gulp.src([source + "**/*.less"])
-      .pipe(Concat("styles.css"))
-      .pipe(Less())
-      .pipe(gulp.dest(target));
-    gulp.src([source + "app.js", source + "**/*.js"])
-      .pipe(Concat("scripts.js"))
-      .pipe(gulp.dest(target));
+  // concat then scss
+  const transform = () => {
+    gulp.src('./sass/**/*.scss')
+      .pipe(concat("styles.css"))
+      .pipe(sass().on("error", sass.logError))
+      .pipe(gulp.dest(_bundles));
+    gulp.src([_sources + "app.js", _sources + "**/*.js"])
+      .pipe(concat("scripts.js"))
+      .pipe(gulp.dest(_bundles));
   };
-  combine();
+  transform();
   gulp.watch([
-    source + "**/*.less",
-    source + "**/*.js",
-    source + "app.js"
-  ], combine);
-  // live reload
-  const reloadSource = [
-    "./sources/index.html",
-    "./sources/partials/**/*.html",
-    "./sources/bundles/**/*"
-  ];
+    _sources + "**/*.scss",
+    _sources + "**/*.js",
+    _sources + "app.js"
+  ], transform);
+  // connect by JetBrains
   connect.server({
-    root: "sources",
-    port: 5008,
+    root: _client,
+    port: 9001,
     livereload: true
   });
-  gulp.watch(reloadSource, () => {
-    gulp.src(reloadSource)
+  const reload = [
+    _bundles, _sources
+  ];
+  gulp.watch(reload, () => {
+    gulp.src(reload)
       .pipe(connect.reload());
   });
-  // nodemon
-  const server = "./mocks/server.js";
+  // nodemon for express server
   nodemon({
-    script: server,
-    watch: ["./mocks/*.js"],
+    script: (_server + "app.js"),
+    watch: [(_server + "*.js")],
   });
 });
 
