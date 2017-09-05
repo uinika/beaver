@@ -18,12 +18,12 @@ const gulp = require("gulp"),
 
 /** path */
 const _base = __dirname;
-const _client = "../client/";
-const _server = "../server/";
-const _build = "../build/";
-const _release = "../release/";
-const _bundles = "../client/bundles/";
-const _sources = "../client/sources/";
+const _client = "./client/";
+const _server = "./server/";
+const _build = "./build/";
+const _release = "./release/";
+const _bundles = "./client/bundles/";
+const _sources = "./client/sources/";
 
 /**  */
 
