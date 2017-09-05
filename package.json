@@ -1,38 +1,39 @@
 {
-  "name": "uinika.github.io",
-  "version": "2.0.0",
-  "description": "Hank's blog",
+  "name": "beast",
+  "version": "0.0.1",
+  "description": "Automatic front-end projects with gulp",
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uinika/uinika.github.io"
+    "url": "https://github.com/uinika/beast"
   },
   "author": "Hank",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "cors": "^2.8.3",
-    "express": "^4.15.3",
-    "express-session": "^1.15.3",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "jsonfile": "^3.0.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "mongodb": "^2.2.28",
-    "mongoose": "^4.10.4",
-    "multer": "^1.3.0",
-    "q": "^1.5.0"
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.10",
+    "multer": "^1.3.0"
   },
   "devDependencies": {
-    "colors": "^1.1.2",
-    "del": "^2.2.2",
+    "chalk": "^2.1.0",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.4.1",
+    "gulp-clean-css": "^3.8.0",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",
     "gulp-htmlmin": "^3.0.0",
-    "gulp-less": "^3.3.0",
     "gulp-nodemon": "^2.2.1",
-    "gulp-replace": "^0.5.4",
+    "gulp-replace": "^0.6.1",
+    "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
-    "gulp-zip": "^4.0.0"
+    "gulp-zip": "^4.0.0",
+    "minimist": "^1.2.0"
   }
 }

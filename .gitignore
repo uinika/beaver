@@ -1,5 +1,9 @@
-# Node modules' directory
 node_modules
 
-# Log for npm debugging
-npm-debug.log
+build
+
+release
+
+package-lock.json
+
+sources/bundles
