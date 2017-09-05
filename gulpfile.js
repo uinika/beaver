@@ -1,58 +1,73 @@
-const Gulp = require("gulp"),
-      Connect = require("gulp-connect"),
-      Nodemon = require("gulp-nodemon"),
-      Less = require("gulp-less"),
-      Concat = require("gulp-concat"),
-      UglifyJS = require("gulp-uglify"),
-      MinifyCSS = require("gulp-clean-css"),
-      MinHtml = require("gulp-htmlmin"),
-      Replace = require("gulp-replace"),
-      Compress = require("gulp-zip"),
-      Moment = require("moment"),
-      Delete = require("del");
+const gulp = require("gulp"),
+  chalk = require("chalk"),
+  connect = require("gulp-connect"),
+  nodemon = require("gulp-nodemon"),
+  sass = require("gulp-sass"),
+  Concat = require("gulp-concat"),
+  UglifyJS = require("gulp-uglify"),
+  cleanCSS = require("gulp-clean-css"),
+  minHtml = require("gulp-htmlmin"),
+  zip = require("gulp-zip"),
+  minimist = require('minimist'),
+  moment = require("moment"),
+  del = require("del");
 
 /** gulp */
-Gulp.task("default", () => {
+gulp.task("default", () => {
   // less & concat
-  const source = "./contents/";
-  const target = "./bundles/";
+  const source = "./sources/partials/";
+  const target = "./sources/bundles";
   const combine = () => {
-    Gulp.src([source + "**/*.less"])
-      .pipe(Concat("styles.min.css"))
+    gulp.src([source + "**/*.less"])
+      .pipe(Concat("styles.css"))
       .pipe(Less())
-      .pipe(MinifyCSS({compatibility: "ie8"}))
-      .pipe(Gulp.dest(target));
-    Gulp.src([source + "app.js", source + "**/*.js"])
-      .pipe(Concat("scripts.min.js"))
-      .pipe(UglifyJS())
-      .pipe(Gulp.dest(target));
+      .pipe(gulp.dest(target));
+    gulp.src([source + "app.js", source + "**/*.js"])
+      .pipe(Concat("scripts.js"))
+      .pipe(gulp.dest(target));
   };
   combine();
-  Gulp.watch([
+  gulp.watch([
     source + "**/*.less",
     source + "**/*.js",
     source + "app.js"
   ], combine);
   // live reload
   const reloadSource = [
-    "./index.html",
-    "./contents/**/*.html",
-    "./bundles/**/*"
+    "./sources/index.html",
+    "./sources/partials/**/*.html",
+    "./sources/bundles/**/*"
   ];
-  Connect.server({
-    root: "./",
-    port: 5555,
+  connect.server({
+    root: "sources",
+    port: 5008,
     livereload: true
   });
-  Gulp.watch(reloadSource, () => {
-    Gulp.src(reloadSource)
-      .pipe(Connect.reload());
+  gulp.watch(reloadSource, () => {
+    gulp.src(reloadSource)
+      .pipe(connect.reload());
+  });
+  // nodemon
+  const server = "./mocks/server.js";
+  nodemon({
+    script: server,
+    watch: ["./mocks/*.js"],
   });
 });
 
+/** gulp build */
+gulp.task("build", () => {
+
+});
+
+/** gulp release */
+gulp.task("release", ["build"], () => {
+
+});
+
 /** gulp clean */
-Gulp.task("clean", () => {
+gulp.task("clean", () => {
   Delete([
-    "./bundles/**/*"
+    "./release/**/*", "./build/**/*"
   ]);
 });

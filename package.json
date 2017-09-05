@@ -1,7 +1,7 @@
 {
   "name": "beast",
   "version": "0.0.1",
-  "description": "Automatic front-end projects with gulp",
+  "description": "Automatic front-end project with gulp",
   "main": "index.html",
   "repository": {
     "type": "git",
