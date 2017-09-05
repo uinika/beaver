@@ -11,7 +11,9 @@ const gulp = require("gulp"),
   zip = require("gulp-zip"),
   minimist = require('minimist'),
   moment = require("moment"),
-  del = require("del");
+  del = require("del"),
+  base = require("./config/base"),
+  common = require("./config/common");
 
 /** path */
 const _base = __dirname;
@@ -59,6 +61,9 @@ gulp.task("default", () => {
     script: (_server + "app.js"),
     watch: [(_server + "*.js")],
   });
+  console.info(
+    chalk.yellow.bgBlue("jetbrains-connect-server started on http://localhost:" + base.port + base.uri)
+  );
 });
 
 /** gulp build */
