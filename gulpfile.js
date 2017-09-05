@@ -3,6 +3,7 @@ const gulp = require("gulp"),
   connect = require("gulp-connect"),
   nodemon = require("gulp-nodemon"),
   sass = require("gulp-sass"),
+  autoprefixer = require("gulp-autoprefixer"),
   concat = require("gulp-concat"),
   uglifyJS = require("gulp-uglify"),
   cleanCSS = require("gulp-clean-css"),
@@ -23,11 +24,12 @@ const _sources = "./client/sources/";
 
 /** gulp */
 gulp.task("default", () => {
-  // concat then scss
+  // concat then scss & autoprefix
   const transform = () => {
     gulp.src('./sass/**/*.scss')
       .pipe(concat("styles.css"))
       .pipe(sass().on("error", sass.logError))
+      .pipe(autoprefixer())
       .pipe(gulp.dest(_bundles));
     gulp.src([_sources + "app.js", _sources + "**/*.js"])
       .pipe(concat("scripts.js"))
@@ -71,7 +73,5 @@ gulp.task("release", ["build"], () => {
 
 /** gulp clean */
 gulp.task("clean", () => {
-  Delete([
-    "./release/**/*", "./build/**/*"
-  ]);
+  delete([_bundles, _release]);
 });
