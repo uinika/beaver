@@ -48,7 +48,8 @@ gulp.task("default", () => {
     livereload: true
   });
   const reload = [
-    _bundles, _sources
+    (_bundles + "**/*"),
+    (_sources + "**/*")
   ];
   gulp.watch(reload, () => {
     gulp.src(reload)
