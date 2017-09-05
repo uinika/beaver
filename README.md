@@ -6,7 +6,7 @@
 
 ### Environment
 - [Gulp 3.9.1](https://gulpjs.com/)
-- [Node 6.11.2])(https://nodejs.org/en/)
+- [Node 6.11.2](https://nodejs.org/en/)
 
 ### Vue
 - [Vue 2.4.2](https://cn.vuejs.org)
