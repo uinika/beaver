@@ -26,7 +26,7 @@ const _sources = "./client/sources/";
 gulp.task("default", () => {
   // concat then scss & autoprefix
   const transform = () => {
-    gulp.src('./sass/**/*.scss')
+    gulp.src(_sources + "**/*.scss")
       .pipe(concat("styles.css"))
       .pipe(sass().on("error", sass.logError))
       .pipe(autoprefixer())
