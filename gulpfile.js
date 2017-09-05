@@ -37,9 +37,7 @@ gulp.task("default", () => {
   };
   transform();
   gulp.watch([
-    _sources + "**/*.scss",
-    _sources + "**/*.js",
-    _sources + "app.js"
+    _sources + "**/*.*"
   ], transform);
   // connect by JetBrains
   connect.server({
@@ -49,7 +47,8 @@ gulp.task("default", () => {
   });
   const reload = [
     (_bundles + "**/*"),
-    (_sources + "**/*")
+    (_sources + "**/*"),
+    (_client + "index.html")
   ];
   gulp.watch(reload, () => {
     gulp.src(reload)
